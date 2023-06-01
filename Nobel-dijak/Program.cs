@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Nobel_dijak
@@ -24,7 +22,7 @@ namespace Nobel_dijak
             nobel.Where(G => G.TeljesNev.Contains("Curie")).ToList().ForEach(G=> Console.WriteLine($"\t{G.TeljesNev}({G.Tipus})"));
 
             Console.WriteLine("7. feladat:");
-            nobel.GroupBy(G => G.Tipus).ToList().ForEach(G => Console.WriteLine($"\t{G.Key.PadRight(30)}{G.Count().ToString().PadLeft(3)} db"));
+            nobel.GroupBy(G => G.Tipus).ToList().ForEach(G => Console.WriteLine($"\t{G.Key,-25}{G.Count(),3} db"));
 
             File.WriteAllLines("orvosi.txt", nobel.Where(G => G.Tipus == "orvosi").Select(G => G.ToString()).ToList());
             Console.WriteLine("8. feladat: orvosi.txt");
