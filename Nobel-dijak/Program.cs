@@ -13,7 +13,12 @@ namespace Nobel_dijak
         {
             List<Nobel> nobel = File.ReadAllLines("nobel.csv").Skip(1).Select(G=> new Nobel(G.Split(';'))).ToList();
 
+            Console.WriteLine($"3. feladat: {nobel.Where(G=>G.TeljesNev == "Arthur B. McDonald").First().Tipus}");
+
             Console.WriteLine($"4. feladat: {nobel.Where(G=>G.Evszam == 2017 && G.Tipus == "irodalmi").First().TeljesNev}");
+
+            Console.WriteLine("5. feladat:");
+            nobel.Where(G => G.Evszam >= 1990 && G.Tipus == "béke" && G.Vezeteknev == "").ToList().ForEach(G => Console.WriteLine($"\t{G.Evszam}: {G.TeljesNev}"));
 
             Console.WriteLine("6. feladat:");
             nobel.Where(G => G.TeljesNev.Contains("Curie")).ToList().ForEach(G=> Console.WriteLine($"\t{G.TeljesNev}({G.Tipus})"));
